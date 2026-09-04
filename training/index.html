@@ -14,67 +14,92 @@
 
 <div class="app">
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
-        <div class="brand">
-            <div class="brand-mark">A</div>
+    <div class="brand">
+        <div class="brand-mark">A</div>
 
-            <div>
-                <strong>AERION</strong>
-                <span>Flight Training</span>
-            </div>
+        <div>
+            <div class="brand-name">AERION</div>
+            <div class="brand-subtitle">Pilot Progress System</div>
+        </div>
+    </div>
+
+    <nav class="navigation">
+
+        <div class="nav-section">
+            <span>OVERVIEW</span>
+
+            <a href="../dashboard/index.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
         </div>
 
-        <nav class="sidebar-nav">
+        <div class="nav-section">
+            <span>TRAINING</span>
 
-            <a href="../index.html">
-                <span>Dashboard</span>
+            <a href="../logbook/index.html" class="nav-item">
+                <span class="nav-icon">✈</span>
+                Logbook
             </a>
 
-            <a href="../logbook/index.html">
-                <span>Logbook</span>
+            <a href="./index.html" class="nav-item active">
+                <span class="nav-icon">◉</span>
+                Training
             </a>
 
-            <a href="./index.html" class="active">
-                <span>Training</span>
+            <a href="../theory/index.html" class="nav-item">
+                <span class="nav-icon">▣</span>
+                Theory
             </a>
 
-            <a href="../theory/index.html">
-                <span>Theory</span>
+            <a href="../quiz/index.html" class="nav-item">
+                <span class="nav-icon">✓</span>
+                Quiz
             </a>
 
-            <a href="../quiz/index.html">
-                <span>Quiz</span>
+            <a href="../simulator/index.html" class="nav-item">
+                <span class="nav-icon">▸</span>
+                Simulator
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <span>PROGRESS</span>
+
+            <a href="../goals/index.html" class="nav-item">
+                <span class="nav-icon">◎</span>
+                Goals
             </a>
 
-            <a href="../simulator/index.html">
-                <span>Simulator</span>
+            <a href="../statistics/index.html" class="nav-item">
+                <span class="nav-icon">◒</span>
+                Statistics
             </a>
+        </div>
 
-            <a href="../goals/index.html">
-                <span>Goals</span>
-            </a>
+    </nav>
 
-            <a href="../statistics/index.html">
-                <span>Statistics</span>
-            </a>
+    <div class="sidebar-bottom">
 
-            <a href="../settings/index.html">
-                <span>Settings</span>
-            </a>
+        <a href="../settings/index.html" class="nav-item">
+            <span class="nav-icon">⚙</span>
+            Settings
+        </a>
 
-        </nav>
-
-        <div class="sidebar-profile">
+        <div class="profile-mini">
             <div class="profile-avatar" id="profileInitial">F</div>
 
             <div>
                 <strong id="profileName">Francesco</strong>
-                <span>PPL Student</span>
+                <small>PPL Student</small>
             </div>
         </div>
 
-    </aside>
+    </div>
+
+</aside>
 
 
     <main class="main-content">
