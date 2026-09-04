@@ -1,151 +1,141 @@
-const CACHE_NAME = "aerion-cache-v1";
-
-const APP_FILES = [
-    "./",
-    "./index.html",
-    "./logo.png",
-    "./manifest.json",
-
-    "./dashboard/index.html",
-    "./logbook/index.html",
-    "./training/index.html",
-    "./theory/index.html",
-    "./quiz/index.html",
-    "./simulator/index.html",
-    "./goals/index.html",
-    "./statistics/index.html",
-    "./settings/index.html",
-
-    "./css/global.css",
-    "./css/dashboard.css",
-    "./css/logbook.css",
-    "./css/training.css",
-    "./css/theory.css",
-    "./css/quiz.css",
-    "./css/simulator.css",
-    "./css/goals.css",
-    "./css/statistics.css",
-    "./css/settings.css",
-
-    "./js/app.js",
-    "./js/storage.js",
-    "./js/dashboard.js",
-    "./js/logbook.js",
-    "./js/training.js",
-    "./js/theory.js",
-    "./js/quiz.js",
-    "./js/simulator.js",
-    "./js/goals.js",
-    "./js/statistics.js",
-    "./js/settings.js"
-];
+const CACHE_NAME = "aerion-runtime-v1";
 
 
-/* =========================================================
-   INSTALL
-========================================================= */
+/* INSTALL */
 
-self.addEventListener("install", event => {
-
-    event.waitUntil(
-
-        caches
-            .open(CACHE_NAME)
-            .then(cache => cache.addAll(APP_FILES))
-
-    );
-
-    self.skipWaiting();
-
-});
-
-
-/* =========================================================
-   ACTIVATE
-========================================================= */
-
-self.addEventListener("activate", event => {
-
-    event.waitUntil(
-
-        caches.keys()
-            .then(cacheNames => {
-
-                return Promise.all(
-
-                    cacheNames
-                        .filter(name => {
-                            return name !== CACHE_NAME;
-                        })
-                        .map(name => {
-                            return caches.delete(name);
-                        })
-
-                );
-
-            })
-
-    );
-
-    self.clients.claim();
-
-});
-
-
-/* =========================================================
-   FETCH
-   NETWORK FIRST
-========================================================= */
-
-self.addEventListener("fetch", event => {
-
-    if (event.request.method !== "GET") {
-        return;
+self.addEventListener(
+    "install",
+    event => {
+        self.skipWaiting();
     }
+);
 
 
-    event.respondWith(
+/* ACTIVATE */
 
-        fetch(event.request)
-
-            .then(response => {
-
-                if (
-                    !response ||
-                    response.status !== 200
-                ) {
-                    return response;
+self.addEventListener(
+    "activate",
+    event => {
+        event.waitUntil(
+            caches.keys().then(
+                cacheNames => {
+                    return Promise.all(
+                        cacheNames
+                            .filter(
+                                name =>
+                                    name !== CACHE_NAME
+                            )
+                            .map(
+                                name =>
+                                    caches.delete(name)
+                            )
+                    );
                 }
+            )
+        );
+
+        self.clients.claim();
+    }
+);
 
 
-                const responseClone =
-                    response.clone();
+/* FETCH */
+
+self.addEventListener(
+    "fetch",
+    event => {
+        const request = event.request;
+
+        if (request.method !== "GET") {
+            return;
+        }
+
+        const url = new URL(request.url);
+
+        if (
+            url.origin !== self.location.origin
+        ) {
+            return;
+        }
+
+        const isAppAsset =
+            request.destination === "document" ||
+            request.destination === "script" ||
+            request.destination === "style" ||
+            request.destination === "manifest" ||
+            request.destination === "image";
+
+        if (!isAppAsset) {
+            return;
+        }
+
+        event.respondWith(
+            fetch(
+                new Request(request, {
+                    cache: "no-store"
+                })
+            )
+                .then(response => {
+
+                    if (
+                        response &&
+                        response.ok
+                    ) {
+                        const clone =
+                            response.clone();
+
+                        caches
+                            .open(CACHE_NAME)
+                            .then(cache => {
+                                cache.put(
+                                    request,
+                                    clone
+                                );
+                            });
+                    }
+
+                    return response;
+                })
+                .catch(() => {
+                    return caches.match(request);
+                })
+        );
+    }
+);
 
 
-                caches
-                    .open(CACHE_NAME)
-                    .then(cache => {
+/* UPDATE MESSAGE */
 
-                        cache.put(
-                            event.request,
-                            responseClone
-                        );
+self.addEventListener(
+    "message",
+    event => {
+        if (
+            event.data?.type ===
+            "CHECK_FOR_UPDATE"
+        ) {
+            self.registration.update();
+        }
+    }
+);
 
+
+/* NEW VERSION */
+
+self.addEventListener(
+    "controllerchange",
+    () => {
+        self.clients
+            .matchAll({
+                type: "window",
+                includeUncontrolled: true
+            })
+            .then(clients => {
+                clients.forEach(client => {
+                    client.postMessage({
+                        type:
+                            "AERION_UPDATE_AVAILABLE"
                     });
-
-
-                return response;
-
-            })
-
-            .catch(() => {
-
-                return caches.match(
-                    event.request
-                );
-
-            })
-
-    );
-
-});
+                });
+            });
+    }
+);
