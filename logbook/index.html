@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AERION — Logbook</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/logbook.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">A</div>
+
+            <div>
+                <div class="brand-name">AERION</div>
+                <div class="brand-subtitle">Pilot Progress System</div>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section">
+
+                <span>OVERVIEW</span>
+
+                <a href="../dashboard/index.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+            </div>
+
+            <div class="nav-section">
+
+                <span>TRAINING</span>
+
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">✈</span>
+                    Logbook
+                </a>
+
+                <a href="../training/index.html" class="nav-item">
+                    <span class="nav-icon">◉</span>
+                    Training
+                </a>
+
+                <a href="../theory/index.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    Theory
+                </a>
+
+                <a href="../quiz/index.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    Quiz
+                </a>
+
+                <a href="../simulator/index.html" class="nav-item">
+                    <span class="nav-icon">▸</span>
+                    Simulator
+                </a>
+
+            </div>
+
+            <div class="nav-section">
+
+                <span>PROGRESS</span>
+
+                <a href="../goals/index.html" class="nav-item">
+                    <span class="nav-icon">◎</span>
+                    Goals
+                </a>
+
+                <a href="../statistics/index.html" class="nav-item">
+                    <span class="nav-icon">◒</span>
+                    Statistics
+                </a>
+
+            </div>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../settings/index.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <div class="profile-mini">
+
+                <div class="profile-avatar">F</div>
+
+                <div>
+                    <strong>Francesco</strong>
+                    <small>PPL Student</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <div class="topbar-label">TRAINING</div>
+                <div class="topbar-title">LOGBOOK</div>
+            </div>
+
+            <div class="topbar-date" id="currentDate"></div>
+
+        </header>
+
+
+        <section class="page-content logbook-page">
+
+            <div class="page-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        FLIGHT RECORD
+                    </p>
+
+                    <h1>Logbook</h1>
+
+                    <p>
+                        Keep track of every flight in your PPL journey.
+                    </p>
+
+                </div>
+
+                <button
+                    class="primary-button"
+                    id="openFlightModal"
+                >
+                    + Add flight
+                </button>
+
+            </div>
+
+
+            <section class="flight-summary">
+
+                <div class="summary-card glass">
+
+                    <span>FLIGHT TIME</span>
+
+                    <strong id="totalFlightTime">
+                        0:00
+                    </strong>
+
+                    <small>
+                        Total logged
+                    </small>
+
+                </div>
+
+
+                <div class="summary-card glass">
+
+                    <span>PPL TARGET</span>
+
+                    <strong>
+                        45:00
+                    </strong>
+
+                    <small>
+                        Minimum training target
+                    </small>
+
+                </div>
+
+
+                <div class="summary-card glass">
+
+                    <span>REMAINING</span>
+
+                    <strong id="remainingFlightTime">
+                        45:00
+                    </strong>
+
+                    <small>
+                        To target
+                    </small>
+
+                </div>
+
+
+                <div class="summary-card glass">
+
+                    <span>FLIGHTS</span>
+
+                    <strong id="flightCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Logged flights
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <section class="glass progress-card">
+
+                <div class="progress-card-header">
+
+                    <div>
+                        <span class="card-label">
+                            PPL FLIGHT PROGRESS
+                        </span>
+
+                        <h3>
+                            <span id="flightPercentage">0%</span>
+                            completed
+                        </h3>
+                    </div>
+
+                    <span id="flightProgressHours">
+                        0:00 / 45:00
+                    </span>
+
+                </div>
+
+                <div class="progress-track large">
+
+                    <div
+                        class="progress-fill"
+                        id="flightProgressBar"
+                        style="width:0%"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <section class="glass flights-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <p class="card-label">
+                            FLIGHT HISTORY
+                        </p>
+
+                        <h3>
+                            Your flights
+                        </h3>
+
+                    </div>
+
+                    <span
+                        class="flight-count-badge"
+                        id="historyCount"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="flightList"
+                    class="flight-list"
+                ></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div
+    class="modal-overlay"
+    id="flightModal"
+>
+
+    <div class="modal glass">
+
+        <div class="modal-header">
+
+            <div>
+
+                <p class="card-label">
+                    FLIGHT RECORD
+                </p>
+
+                <h2>
+                    Add flight
+                </h2>
+
+            </div>
+
+            <button
+                class="modal-close"
+                id="closeFlightModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="flightForm">
+
+            <div class="form-grid">
+
+                <label>
+                    <span>Date</span>
+
+                    <input
+                        type="date"
+                        id="flightDate"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    <span>Aircraft</span>
+
+                    <input
+                        type="text"
+                        id="flightAircraft"
+                        placeholder="es. Tecnam P92"
+                    >
+                </label>
+
+
+                <label>
+                    <span>Departure</span>
+
+                    <input
+                        type="text"
+                        id="flightDeparture"
+                        placeholder="es. LIBR"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    <span>Arrival</span>
+
+                    <input
+                        type="text"
+                        id="flightArrival"
+                        placeholder="es. LIBR"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    <span>Flight time</span>
+
+                    <input
+                        type="text"
+                        id="flightDuration"
+                        placeholder="01:30"
+                        pattern="[0-9]{1,2}:[0-9]{2}"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    <span>Type</span>
+
+                    <select id="flightType">
+
+                        <option value="Training">
+                            Training
+                        </option>
+
+                        <option value="Solo">
+                            Solo
+                        </option>
+
+                        <option value="Dual">
+                            Dual
+                        </option>
+
+                        <option value="Navigation">
+                            Navigation
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </label>
+
+            </div>
+
+
+            <label class="full-field">
+
+                <span>Notes</span>
+
+                <textarea
+                    id="flightNotes"
+                    placeholder="Scrivi qui ciò che vuoi ricordare di questo volo..."
+                ></textarea>
+
+            </label>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelFlight"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Save flight
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="../js/logbook.js"></script>
+
+</body>
+
+</html>
