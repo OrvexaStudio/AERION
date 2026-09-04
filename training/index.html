@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AERION — Training</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/training.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">A</div>
+
+            <div>
+                <strong>AERION</strong>
+                <span>Flight Training</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="../index.html">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="../logbook/index.html">
+                <span>Logbook</span>
+            </a>
+
+            <a href="./index.html" class="active">
+                <span>Training</span>
+            </a>
+
+            <a href="../theory/index.html">
+                <span>Theory</span>
+            </a>
+
+            <a href="../quiz/index.html">
+                <span>Quiz</span>
+            </a>
+
+            <a href="../simulator/index.html">
+                <span>Simulator</span>
+            </a>
+
+            <a href="../goals/index.html">
+                <span>Goals</span>
+            </a>
+
+            <a href="../statistics/index.html">
+                <span>Statistics</span>
+            </a>
+
+            <a href="../settings/index.html">
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-profile">
+            <div class="profile-avatar" id="profileInitial">F</div>
+
+            <div>
+                <strong id="profileName">Francesco</strong>
+                <span>PPL Student</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <span class="eyebrow">PRACTICAL TRAINING</span>
+                <h1>Training</h1>
+            </div>
+
+            <div class="topbar-date" id="currentDate"></div>
+
+        </header>
+
+
+        <section class="training-hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">PPL(A)</span>
+
+                <h2>Flight Training</h2>
+
+                <p>
+                    Monitora le competenze pratiche acquisite durante
+                    il percorso di addestramento.
+                </p>
+
+                <div class="hero-progress">
+
+                    <div class="progress-info">
+                        <span>Progresso pratico</span>
+                        <strong id="overallProgress">0%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            id="overallProgressBar"
+                            style="width:0%">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-stat">
+                <span>Competenze</span>
+                <strong id="completedSkills">0 / 0</strong>
+                <small>completate</small>
+            </div>
+
+        </section>
+
+
+        <section class="training-summary">
+
+            <div class="summary-card">
+                <span class="summary-label">Completate</span>
+                <strong id="completedCount">0</strong>
+                <small>competenze</small>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">In addestramento</span>
+                <strong id="trainingCount">0</strong>
+                <small>competenze</small>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">Da iniziare</span>
+                <strong id="notStartedCount">0</strong>
+                <small>competenze</small>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">Prossimo focus</span>
+                <strong id="nextSkill">—</strong>
+                <small>competenza</small>
+            </div>
+
+        </section>
+
+
+        <section class="section-heading">
+
+            <div>
+                <span class="eyebrow">SYLLABUS</span>
+                <h2>Practical Skills</h2>
+            </div>
+
+            <span id="skillTotal" class="skill-total">0 skills</span>
+
+        </section>
+
+
+        <section id="trainingContainer" class="training-container"></section>
+
+    </main>
+
+</div>
+
+
+<script src="../js/training.js"></script>
+
+</body>
+</html>
