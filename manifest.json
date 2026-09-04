@@ -1,0 +1,20 @@
+{
+  "name": "AERION — Pilot Progress System",
+  "short_name": "AERION",
+  "description": "Professional pilot training progress system for PPL students.",
+  "start_url": "./dashboard/index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#07090d",
+  "theme_color": "#07090d",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
