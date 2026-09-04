@@ -1,4 +1,4 @@
-const AERION_UPDATE_INTERVAL = 60 * 1000;
+const AERION_UPDATE_INTERVAL = 30 * 1000;
 
 async function registerAERIONServiceWorker() {
     if (!("serviceWorker" in navigator)) {
@@ -19,38 +19,39 @@ async function registerAERIONServiceWorker() {
                 }
             );
 
-        await registration.update();
-
-        setInterval(() => {
+        const checkForUpdates = () => {
             registration.update();
-        }, AERION_UPDATE_INTERVAL);
+        };
+
+        checkForUpdates();
+
+        setInterval(
+            checkForUpdates,
+            AERION_UPDATE_INTERVAL
+        );
 
         document.addEventListener(
             "visibilitychange",
             () => {
                 if (
-                    document.visibilityState === "visible"
+                    document.visibilityState ===
+                    "visible"
                 ) {
-                    registration.update();
+                    checkForUpdates();
                 }
             }
         );
 
         navigator.serviceWorker.addEventListener(
-            "message",
-            event => {
-                if (
-                    event.data?.type ===
-                    "AERION_UPDATE_AVAILABLE"
-                ) {
-                    window.location.reload();
-                }
+            "controllerchange",
+            () => {
+                window.location.reload();
             }
         );
 
     } catch (error) {
         console.error(
-            "AERION PWA error:",
+            "AERION Service Worker error:",
             error
         );
     }
