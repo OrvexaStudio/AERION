@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090d">
+
+    <title>AERION — Goals</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/goals.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">A</div>
+
+            <div>
+                <div class="brand-name">AERION</div>
+                <div class="brand-subtitle">Pilot Progress System</div>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section">
+                <span>OVERVIEW</span>
+
+                <a href="../dashboard/index.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span>TRAINING</span>
+
+                <a href="../logbook/index.html" class="nav-item">
+                    <span class="nav-icon">✈</span>
+                    Logbook
+                </a>
+
+                <a href="../training/index.html" class="nav-item">
+                    <span class="nav-icon">◉</span>
+                    Training
+                </a>
+
+                <a href="../theory/index.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    Theory
+                </a>
+
+                <a href="../quiz/index.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    Quiz
+                </a>
+
+                <a href="../simulator/index.html" class="nav-item">
+                    <span class="nav-icon">▸</span>
+                    Simulator
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span>PROGRESS</span>
+
+                <a href="./index.html" class="nav-item active">
+                    <span class="nav-icon">◎</span>
+                    Goals
+                </a>
+
+                <a href="../statistics/index.html" class="nav-item">
+                    <span class="nav-icon">◒</span>
+                    Statistics
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../settings/index.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <div class="profile-mini">
+
+                <div class="profile-avatar" id="profileInitial">
+                    F
+                </div>
+
+                <div>
+                    <strong id="profileName">Francesco</strong>
+                    <small>PPL Student</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <div class="topbar-label">PROGRESS</div>
+                <div class="topbar-title">GOALS</div>
+            </div>
+
+            <div class="topbar-date" id="currentDate"></div>
+
+        </header>
+
+
+        <section class="page-content goals-page">
+
+
+            <div class="welcome">
+
+                <div>
+                    <p class="eyebrow">PERSONAL PROGRESS</p>
+
+                    <h1>Goals.</h1>
+
+                    <p class="welcome-description">
+                        Definisci gli obiettivi del tuo percorso
+                        e trasformali in traguardi concreti.
+                    </p>
+                </div>
+
+                <button
+                    class="primary-button"
+                    id="addGoalButton"
+                >
+                    Nuovo obiettivo
+                </button>
+
+            </div>
+
+
+            <section class="goals-overview">
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        OBIETTIVI
+                    </span>
+
+                    <strong id="totalGoals">
+                        0
+                    </strong>
+
+                    <small>
+                        totali
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        COMPLETATI
+                    </span>
+
+                    <strong id="completedGoals">
+                        0
+                    </strong>
+
+                    <small>
+                        obiettivi raggiunti
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        IN CORSO
+                    </span>
+
+                    <strong id="activeGoals">
+                        0
+                    </strong>
+
+                    <small>
+                        obiettivi attivi
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        PROGRESSO
+                    </span>
+
+                    <strong id="averageProgress">
+                        0%
+                    </strong>
+
+                    <small>
+                        media generale
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <section class="goals-layout">
+
+
+                <div class="glass goals-main">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="card-label">
+                                MY GOALS
+                            </p>
+
+                            <h3>
+                                I miei obiettivi
+                            </h3>
+                        </div>
+
+                        <span
+                            class="activity-count"
+                            id="goalCount"
+                        >
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="goalsContainer"
+                        class="goals-container"
+                    >
+
+                        <div class="empty-state">
+
+                            <div class="empty-icon">
+                                ○
+                            </div>
+
+                            <strong>
+                                Nessun obiettivo
+                            </strong>
+
+                            <span>
+                                Crea il tuo primo obiettivo
+                                per iniziare a monitorare
+                                il tuo percorso.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="glass goals-side">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="card-label">
+                                NEXT TARGET
+                            </p>
+
+                            <h3>
+                                Prossimo traguardo
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="nextGoal"
+                        class="next-goal"
+                    >
+
+                        <div class="empty-state">
+
+                            <div class="empty-icon">
+                                ○
+                            </div>
+
+                            <strong>
+                                Nessun traguardo
+                            </strong>
+
+                            <span>
+                                Il prossimo obiettivo
+                                apparirà qui.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="glass milestones-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="card-label">
+                            MILESTONES
+                        </p>
+
+                        <h3>
+                            Traguardi recenti
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="milestonesContainer"
+                    class="milestones-container"
+                >
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ○
+                        </div>
+
+                        <strong>
+                            Nessun traguardo raggiunto
+                        </strong>
+
+                        <span>
+                            I milestone completati
+                            appariranno qui.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div
+    id="goalModal"
+    class="modal hidden"
+>
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <div>
+                <p class="card-label">
+                    NEW GOAL
+                </p>
+
+                <h3>
+                    Crea obiettivo
+                </h3>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeGoalModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="goalForm">
+
+            <div class="form-field">
+
+                <label for="goalTitle">
+                    Obiettivo
+                </label>
+
+                <input
+                    type="text"
+                    id="goalTitle"
+                    placeholder="es. Completare il PPL"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="goalDescription">
+                    Descrizione
+                </label>
+
+                <textarea
+                    id="goalDescription"
+                    rows="3"
+                    placeholder="Descrivi il tuo obiettivo..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-field">
+
+                    <label for="goalCategory">
+                        Categoria
+                    </label>
+
+                    <select id="goalCategory">
+
+                        <option value="Training">
+                            Training
+                        </option>
+
+                        <option value="Theory">
+                            Theory
+                        </option>
+
+                        <option value="Flight">
+                            Flight
+                        </option>
+
+                        <option value="Career">
+                            Career
+                        </option>
+
+                        <option value="Personal">
+                            Personal
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="goalDeadline">
+                        Scadenza
+                    </label>
+
+                    <input
+                        type="date"
+                        id="goalDeadline"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label for="goalTarget">
+                    Progresso iniziale
+                </label>
+
+                <input
+                    type="number"
+                    id="goalTarget"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelGoalButton"
+                >
+                    Annulla
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Crea obiettivo
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="../js/goals.js"></script>
+
+</body>
+</html>
