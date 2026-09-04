@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
 
@@ -15,20 +15,376 @@
         content="#07090d"
     >
 
-    <title>AERION</title>
+    <title>AERION — Pilot Progress System</title>
+
+    <link
+        rel="stylesheet"
+        href="css/global.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+
+        .landing {
+            position: relative;
+
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px;
+        }
+
+
+        .landing-background {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(121,169,255,.13),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(60,90,150,.08),
+                    transparent 30%
+                );
+        }
+
+
+        .landing-content {
+            position: relative;
+            z-index: 2;
+
+            width: min(520px, 100%);
+
+            text-align: center;
+
+            animation:
+                landingAppear .8s ease forwards;
+        }
+
+
+        .logo-mark {
+            width: 78px;
+            height: 78px;
+
+            margin: 0 auto 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border-light);
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.10),
+                    rgba(255,255,255,.035)
+                );
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.35),
+                inset 0 1px 0 rgba(255,255,255,.08);
+
+            color: var(--text);
+
+            font-size: 30px;
+            font-weight: 700;
+
+            letter-spacing: -2px;
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+
+        .brand-name {
+            margin-bottom: 8px;
+
+            color: var(--text);
+
+            font-size: 42px;
+            font-weight: 700;
+
+            letter-spacing: 7px;
+        }
+
+
+        .brand-subtitle {
+            color: var(--text-secondary);
+
+            font-size: 11px;
+            font-weight: 600;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+
+        .landing-divider {
+            width: 46px;
+            height: 1px;
+
+            margin: 34px auto;
+
+            background:
+                rgba(255,255,255,.18);
+        }
+
+
+        .landing-welcome {
+            margin-bottom: 8px;
+
+            color: var(--text-secondary);
+
+            font-size: 13px;
+        }
+
+
+        .landing-profile {
+            margin-bottom: 34px;
+
+            color: var(--text);
+
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+
+        .enter-button {
+            position: relative;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 190px;
+            height: 52px;
+
+            padding: 0 26px;
+
+            border: 1px solid
+                rgba(255,255,255,.16);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,.07);
+
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,.22),
+                inset 0 1px 0 rgba(255,255,255,.07);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .enter-button:hover {
+
+            transform: translateY(-2px);
+
+            background:
+                rgba(255,255,255,.11);
+
+            border-color:
+                rgba(121,169,255,.35);
+
+            box-shadow:
+                0 18px 45px rgba(0,0,0,.30),
+                0 0 35px rgba(121,169,255,.08);
+        }
+
+
+        .enter-button:active {
+            transform: translateY(0);
+        }
+
+
+        .enter-arrow {
+            margin-left: 12px;
+
+            font-size: 16px;
+
+            transition:
+                transform .25s ease;
+        }
+
+
+        .enter-button:hover .enter-arrow {
+            transform: translateX(4px);
+        }
+
+
+        .landing-footer {
+            position: absolute;
+
+            bottom: 28px;
+            left: 0;
+            right: 0;
+
+            text-align: center;
+
+            color: var(--text-muted);
+
+            font-size: 9px;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+
+        @keyframes landingAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .landing {
+                padding: 24px;
+            }
+
+
+            .brand-name {
+                font-size: 34px;
+                letter-spacing: 5px;
+            }
+
+
+            .brand-subtitle {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+
+            .logo-mark {
+                width: 68px;
+                height: 68px;
+
+                border-radius: 21px;
+
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 
 <body>
 
-<script>
+    <main class="landing">
 
-    window.location.replace(
-        "dashboard/index.html"
-    );
+        <div class="landing-background"></div>
 
-</script>
+
+        <div class="landing-content">
+
+            <div class="logo-mark">
+                A
+            </div>
+
+
+            <div class="brand-name">
+                AERION
+            </div>
+
+
+            <div class="brand-subtitle">
+                Pilot Progress System
+            </div>
+
+
+            <div class="landing-divider"></div>
+
+
+            <div class="landing-welcome">
+                Welcome back
+            </div>
+
+
+            <div class="landing-profile">
+                Francesco · PPL Student
+            </div>
+
+
+            <a
+                href="dashboard/index.html"
+                class="enter-button"
+            >
+
+                Enter AERION
+
+                <span class="enter-arrow">
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="landing-footer">
+            Private Pilot Licence · Training System
+        </div>
+
+    </main>
 
 </body>
 
