@@ -17,6 +17,7 @@
     margin-bottom: 22px;
     overflow: hidden;
     position: relative;
+    border-radius: 20px;
 }
 
 .simulator-hero::after {
@@ -597,4 +598,16 @@
         padding: 20px;
     }
 
+}
+
+/* =========================================================
+   GLASS CARDS — AERION STANDARD
+   ========================================================= */
+
+.simulator-hero,
+.metric-card,
+.simulator-form-card,
+.focus-card,
+.simulator-history-panel {
+    border-radius: var(--radius);
 }
