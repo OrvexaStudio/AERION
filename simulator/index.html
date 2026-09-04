@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090d">
+
+    <title>AERION — Simulator</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/simulator.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">A</div>
+
+            <div>
+                <div class="brand-name">AERION</div>
+                <div class="brand-subtitle">Pilot Progress System</div>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section">
+                <span>OVERVIEW</span>
+
+                <a href="../dashboard/index.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span>TRAINING</span>
+
+                <a href="../logbook/index.html" class="nav-item">
+                    <span class="nav-icon">✈</span>
+                    Logbook
+                </a>
+
+                <a href="../training/index.html" class="nav-item">
+                    <span class="nav-icon">◉</span>
+                    Training
+                </a>
+
+                <a href="../theory/index.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    Theory
+                </a>
+
+                <a href="../quiz/index.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    Quiz
+                </a>
+
+                <a href="./index.html" class="nav-item active">
+                    <span class="nav-icon">▸</span>
+                    Simulator
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span>PROGRESS</span>
+
+                <a href="../goals/index.html" class="nav-item">
+                    <span class="nav-icon">◎</span>
+                    Goals
+                </a>
+
+                <a href="../statistics/index.html" class="nav-item">
+                    <span class="nav-icon">◒</span>
+                    Statistics
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../settings/index.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <div class="profile-mini">
+
+                <div class="profile-avatar" id="profileInitial">
+                    F
+                </div>
+
+                <div>
+                    <strong id="profileName">Francesco</strong>
+                    <small>PPL Student</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <div class="topbar-label">FLIGHT TRAINING</div>
+                <div class="topbar-title">AERION</div>
+            </div>
+
+            <div class="topbar-date" id="currentDate"></div>
+
+        </header>
+
+
+        <section class="page-content simulator-page">
+
+            <div class="welcome">
+
+                <div>
+                    <p class="eyebrow">SIMULATION</p>
+
+                    <h1>Flight Simulator.</h1>
+
+                    <p class="welcome-description">
+                        Registra e monitora le tue sessioni di simulazione.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <section class="simulator-hero glass">
+
+                <div class="simulator-hero-content">
+
+                    <div>
+                        <p class="card-label">SIMULATOR TRAINING</p>
+
+                        <h2>
+                            Train beyond<br>
+                            the cockpit.
+                        </h2>
+
+                        <p>
+                            Usa il simulatore per consolidare procedure,
+                            navigazione e gestione dell'aeromobile.
+                        </p>
+                    </div>
+
+                    <div class="simulator-hero-stat">
+
+                        <span>SIMULATOR TIME</span>
+
+                        <strong id="totalSimulatorTime">
+                            0:00
+                        </strong>
+
+                        <small>
+                            ore registrate
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="simulator-summary">
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        SESSIONI
+                    </span>
+
+                    <strong id="sessionCount">
+                        0
+                    </strong>
+
+                    <small>
+                        sessioni registrate
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        TEMPO TOTALE
+                    </span>
+
+                    <strong id="summaryTime">
+                        0:00
+                    </strong>
+
+                    <small>
+                        tempo al simulatore
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        ULTIMA SESSIONE
+                    </span>
+
+                    <strong id="lastSession">
+                        —
+                    </strong>
+
+                    <small>
+                        data
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        FOCUS
+                    </span>
+
+                    <strong id="mainFocus">
+                        —
+                    </strong>
+
+                    <small>
+                        area più allenata
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <section class="simulator-grid">
+
+
+                <div class="glass simulator-form-card">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="card-label">
+                                NEW SESSION
+                            </p>
+
+                            <h3>
+                                Registra simulazione
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+                    <form id="simulatorForm">
+
+
+                        <div class="form-grid">
+
+                            <div class="form-field">
+
+                                <label for="sessionDate">
+                                    Data
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="sessionDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="simulatorType">
+                                    Simulatore
+                                </label>
+
+                                <select id="simulatorType" required>
+
+                                    <option value="">
+                                        Seleziona
+                                    </option>
+
+                                    <option value="MSFS">
+                                        Microsoft Flight Simulator
+                                    </option>
+
+                                    <option value="X-Plane">
+                                        X-Plane
+                                    </option>
+
+                                    <option value="Other">
+                                        Altro
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="aircraft">
+                                    Aeromobile
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="aircraft"
+                                    placeholder="es. C172"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="duration">
+                                    Durata
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="duration"
+                                    placeholder="es. 1:30"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-field full-width">
+
+                                <label for="route">
+                                    Rotta
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="route"
+                                    placeholder="es. LIRF → LIMC"
+                                >
+
+                            </div>
+
+
+                            <div class="form-field full-width">
+
+                                <label for="focus">
+                                    Area di allenamento
+                                </label>
+
+                                <select id="focus" required>
+
+                                    <option value="">
+                                        Seleziona un'area
+                                    </option>
+
+                                    <option value="Procedure">
+                                        Procedure
+                                    </option>
+
+                                    <option value="Navigation">
+                                        Navigazione
+                                    </option>
+
+                                    <option value="Take-off">
+                                        Decollo
+                                    </option>
+
+                                    <option value="Landing">
+                                        Atterraggio
+                                    </option>
+
+                                    <option value="Emergency">
+                                        Emergenze
+                                    </option>
+
+                                    <option value="Aircraft Handling">
+                                        Aircraft Handling
+                                    </option>
+
+                                    <option value="IFR">
+                                        IFR
+                                    </option>
+
+                                    <option value="VFR">
+                                        VFR
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-field full-width">
+
+                                <label for="sessionNotes">
+                                    Note
+                                </label>
+
+                                <textarea
+                                    id="sessionNotes"
+                                    rows="4"
+                                    placeholder="Annota ciò che hai allenato..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Salva sessione
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <div class="glass focus-card">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="card-label">
+                                TRAINING FOCUS
+                            </p>
+
+                            <h3>
+                                Aree allenate
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="focusBreakdown"
+                        class="focus-breakdown"
+                    >
+
+                        <div class="empty-state">
+
+                            <div class="empty-icon">
+                                ○
+                            </div>
+
+                            <strong>
+                                Nessun dato
+                            </strong>
+
+                            <span>
+                                Registra una sessione per vedere
+                                le aree allenate.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="glass panel simulator-history-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="card-label">
+                            HISTORY
+                        </p>
+
+                        <h3>
+                            Sessioni recenti
+                        </h3>
+                    </div>
+
+                    <span
+                        class="activity-count"
+                        id="historyCount"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="simulatorHistory"
+                    class="simulator-history"
+                >
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ○
+                        </div>
+
+                        <strong>
+                            Nessuna sessione registrata
+                        </strong>
+
+                        <span>
+                            Le tue sessioni al simulatore
+                            appariranno qui.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../js/simulator.js"></script>
+
+</body>
+</html>
