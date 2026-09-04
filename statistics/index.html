@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090d">
+
+    <title>AERION — Statistics</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/statistics.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">A</div>
+
+            <div>
+                <div class="brand-name">AERION</div>
+                <div class="brand-subtitle">Pilot Progress System</div>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section">
+                <span>OVERVIEW</span>
+
+                <a href="../dashboard/index.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span>TRAINING</span>
+
+                <a href="../logbook/index.html" class="nav-item">
+                    <span class="nav-icon">✈</span>
+                    Logbook
+                </a>
+
+                <a href="../training/index.html" class="nav-item">
+                    <span class="nav-icon">◉</span>
+                    Training
+                </a>
+
+                <a href="../theory/index.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    Theory
+                </a>
+
+                <a href="../quiz/index.html" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    Quiz
+                </a>
+
+                <a href="../simulator/index.html" class="nav-item">
+                    <span class="nav-icon">▸</span>
+                    Simulator
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span>PROGRESS</span>
+
+                <a href="../goals/index.html" class="nav-item">
+                    <span class="nav-icon">◎</span>
+                    Goals
+                </a>
+
+                <a href="./index.html" class="nav-item active">
+                    <span class="nav-icon">◒</span>
+                    Statistics
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../settings/index.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <div class="profile-mini">
+
+                <div class="profile-avatar" id="profileInitial">
+                    F
+                </div>
+
+                <div>
+                    <strong id="profileName">Francesco</strong>
+                    <small>PPL Student</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <div class="topbar-label">PERFORMANCE</div>
+                <div class="topbar-title">STATISTICS</div>
+            </div>
+
+            <div class="topbar-date" id="currentDate"></div>
+
+        </header>
+
+
+        <section class="page-content statistics-page">
+
+
+            <div class="welcome">
+
+                <div>
+                    <p class="eyebrow">FLIGHT DATA</p>
+
+                    <h1>Statistics.</h1>
+
+                    <p class="welcome-description">
+                        Una panoramica completa dei tuoi progressi
+                        nel percorso di formazione PPL.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <section class="statistics-overview">
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        FLIGHT TIME
+                    </span>
+
+                    <strong id="flightTime">
+                        0:00
+                    </strong>
+
+                    <small>
+                        ore di volo
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        STUDY TIME
+                    </span>
+
+                    <strong id="studyTime">
+                        0:00
+                    </strong>
+
+                    <small>
+                        ore di studio
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        SIMULATOR
+                    </span>
+
+                    <strong id="simulatorTime">
+                        0:00
+                    </strong>
+
+                    <small>
+                        ore simulate
+                    </small>
+
+                </div>
+
+
+                <div class="metric-card glass">
+
+                    <span class="metric-label">
+                        OVERALL
+                    </span>
+
+                    <strong id="overallProgress">
+                        0%
+                    </strong>
+
+                    <small>
+                        progresso generale
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <section class="statistics-grid">
+
+
+                <div class="glass statistics-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="card-label">
+                                PPL PROGRESS
+                            </p>
+
+                            <h3>
+                                Percorso formativo
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-overview">
+
+                        <div class="progress-ring">
+
+                            <div class="progress-ring-inner">
+
+                                <strong id="progressRingValue">
+                                    0%
+                                </strong>
+
+                                <span>
+                                    completato
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-breakdown">
+
+                            <div class="breakdown-item">
+
+                                <div class="breakdown-label">
+                                    <span>Teoria</span>
+                                    <strong id="theoryProgress">0%</strong>
+                                </div>
+
+                                <div class="breakdown-track">
+                                    <div
+                                        class="breakdown-fill"
+                                        id="theoryBar"
+                                        style="width:0%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="breakdown-item">
+
+                                <div class="breakdown-label">
+                                    <span>Training</span>
+                                    <strong id="trainingProgress">0%</strong>
+                                </div>
+
+                                <div class="breakdown-track">
+                                    <div
+                                        class="breakdown-fill"
+                                        id="trainingBar"
+                                        style="width:0%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="breakdown-item">
+
+                                <div class="breakdown-label">
+                                    <span>Flight</span>
+                                    <strong id="flightProgress">0%</strong>
+                                </div>
+
+                                <div class="breakdown-track">
+                                    <div
+                                        class="breakdown-fill"
+                                        id="flightBar"
+                                        style="width:0%"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="glass statistics-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="card-label">
+                                ACTIVITY
+                            </p>
+
+                            <h3>
+                                Attività recente
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="activityStats"
+                        class="activity-stats"
+                    ></div>
+
+                </div>
+
+
+            </section>
+
+
+            <section class="glass statistics-panel full-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="card-label">
+                            FLIGHT LOG
+                        </p>
+
+                        <h3>
+                            Attività di volo
+                        </h3>
+                    </div>
+
+                    <span
+                        class="activity-count"
+                        id="flightCount"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="flightStats"
+                    class="flight-stats"
+                ></div>
+
+            </section>
+
+
+            <section class="glass statistics-panel full-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="card-label">
+                            KNOWLEDGE
+                        </p>
+
+                        <h3>
+                            Preparazione teorica
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="subjectStats"
+                    class="subject-stats"
+                ></div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../js/statistics.js"></script>
+
+</body>
+</html>
